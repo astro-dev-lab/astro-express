@@ -1,0 +1,12 @@
+[project]
+name = "me-astro-fast-demo"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["fastapi==0.142.2", "starlette==1.7.0", "uvicorn==0.34.2"]
+
+[project.optional-dependencies]
+test = ["pytest==9.1.1", "httpx==0.28.1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

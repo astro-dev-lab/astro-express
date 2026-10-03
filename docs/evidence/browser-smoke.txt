@@ -1,0 +1,31 @@
+PASS: health simulation and unauthenticated valid mutation rejected 401
+PASS: keyboard login, six simulated disconnected cards
+PASS: actual browser HttpOnly and SameSite Strict session cookie
+PASS: Stripe checkout-success: success, unique reference + history
+PASS: Stripe payment-declined: failed, unique reference + history
+PASS: HubSpot contact-qualified: success, unique reference + history
+PASS: HubSpot duplicate: failed, unique reference + history
+PASS: Notion create-page: success, unique reference + history
+PASS: Notion permission-denied: failed, unique reference + history
+PASS: Resend email-queued: success, unique reference + history
+PASS: Resend bounced: failed, unique reference + history
+PASS: Twilio sms-queued: success, unique reference + history
+PASS: Twilio invalid-number: failed, unique reference + history
+PASS: Google calendar-event-created: success, unique reference + history
+PASS: Google authorization-rejected: failed, unique reference + history
+PASS: desktop dashboard no horizontal overflow
+PASS: second browser session activity isolated
+PASS: 390px mobile dashboard no horizontal overflow, controls enabled
+PASS: logout revoked server session and old-cookie replay rejected
+PASS: fresh login has empty activity
+PASS: 403 security error displayed and controls reenabled
+PASS: local network failure displayed and controls reenabled
+PASS: pending simulation shows loading, disables controls, then recovers
+PASS: mobile visible action/signout buttons have at least 44px height
+PASS: zero external browser requests and zero JavaScript errors
+{
+  "passed": 25,
+  "failed": 0,
+  "external_requests": [],
+  "javascript_errors": []
+}

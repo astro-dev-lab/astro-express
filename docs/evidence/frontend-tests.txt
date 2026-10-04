@@ -1,0 +1,12 @@
+
+> me-astro-fast-demo@0.1.0 test
+> vitest --run
+
+
+ RUN  v4.1.11 /workspace/astro-express/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  22:20:38
+   Duration  1.29s (transform 107ms, setup 75ms, import 145ms, tests 481ms, environment 405ms)

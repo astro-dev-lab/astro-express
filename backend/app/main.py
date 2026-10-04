@@ -13,6 +13,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from typing import Literal
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from .config import Settings
+from .security import HardenedFastAPI
 
 USER = {"id": "demo-admin", "display_name": "Demo Operator", "role": "demo_admin"}
 COOKIE = "astro_demo_session"
@@ -54,7 +55,7 @@ class ActivityResult(BaseModel):
 
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or Settings.from_env()
-    app = FastAPI(title="ME Astro Fast offline demo", docs_url=None, redoc_url=None, openapi_url=None)
+    app = HardenedFastAPI(title="ME Astro Fast offline demo", docs_url=None, redoc_url=None, openapi_url=None)
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=["127.0.0.1", "localhost", "[::1]"])
     sessions: dict[str, Session] = {}
     app.state.sessions = sessions
@@ -78,7 +79,6 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 chunks.append(chunk)
             request._body = b"".join(chunks)
         response = await call_next(request)
-        response.headers.update({"Cache-Control": "no-store", "X-Content-Type-Options": "nosniff", "Referrer-Policy": "no-referrer", "X-Frame-Options": "DENY", "Content-Security-Policy": "default-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"})
         return response
 
     def authorized(request: Request, mutate=False) -> Session:

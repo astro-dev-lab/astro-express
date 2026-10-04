@@ -1,0 +1,155 @@
+FFF...                                                                   [100%]
+=================================== FAILURES ===================================
+_____ test_headers_on_all_responses[post-/api/auth/demo-login-kwargs0-403] _____
+
+method = 'post', path = '/api/auth/demo-login', kwargs = {}, status = 403
+
+    @pytest.mark.parametrize('method,path,kwargs,status', [
+     ('post','/api/auth/demo-login',{},403),
+     ('post','/api/auth/demo-login',{'headers':{'Origin':'http://127.0.0.1:8000','Content-Length':'4097'}},413),
+     ('post','/api/auth/demo-login',{'headers':{'Origin':'http://127.0.0.1:8000','Sec-Fetch-Site':'cross-site'}},403),
+     ('get','/healthz',{'headers':{'Host':'attacker.invalid'}},400),
+     ('get','/missing',{},404),
+     ('get','/api/auth/me',{},401),
+    ])
+    def test_headers_on_all_responses(method,path,kwargs,status):
+     with TestClient(create_app(),base_url='http://127.0.0.1:8000') as client:
+      response=getattr(client,method)(path,**kwargs)
+     assert response.status_code==status
+>    assert response.headers['x-content-type-options']=='nosniff'
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_security_headers.py:18:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = Headers({'content-length': '22'}), key = 'x-content-type-options'
+
+    def __getitem__(self, key: str) -> str:
+        """
+        Return a single header value.
+
+        If there are multiple headers with the same key, then we concatenate
+        them with commas. See: https://tools.ietf.org/html/rfc7230#section-3.2.2
+        """
+        normalized_key = key.lower().encode(self.encoding)
+
+        items = [
+            header_value.decode(self.encoding)
+            for _, header_key, header_value in self._list
+            if header_key == normalized_key
+        ]
+
+        if items:
+            return ", ".join(items)
+
+>       raise KeyError(key)
+E       KeyError: 'x-content-type-options'
+
+../.venv/lib/python3.12/site-packages/httpx/_models.py:302: KeyError
+_____ test_headers_on_all_responses[post-/api/auth/demo-login-kwargs1-413] _____
+
+method = 'post', path = '/api/auth/demo-login'
+kwargs = {'headers': {'Origin': 'http://127.0.0.1:8000', 'Content-Length': '4097'}}
+status = 413
+
+    @pytest.mark.parametrize('method,path,kwargs,status', [
+     ('post','/api/auth/demo-login',{},403),
+     ('post','/api/auth/demo-login',{'headers':{'Origin':'http://127.0.0.1:8000','Content-Length':'4097'}},413),
+     ('post','/api/auth/demo-login',{'headers':{'Origin':'http://127.0.0.1:8000','Sec-Fetch-Site':'cross-site'}},403),
+     ('get','/healthz',{'headers':{'Host':'attacker.invalid'}},400),
+     ('get','/missing',{},404),
+     ('get','/api/auth/me',{},401),
+    ])
+    def test_headers_on_all_responses(method,path,kwargs,status):
+     with TestClient(create_app(),base_url='http://127.0.0.1:8000') as client:
+      response=getattr(client,method)(path,**kwargs)
+     assert response.status_code==status
+>    assert response.headers['x-content-type-options']=='nosniff'
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_security_headers.py:18:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = Headers({'content-length': '17'}), key = 'x-content-type-options'
+
+    def __getitem__(self, key: str) -> str:
+        """
+        Return a single header value.
+
+        If there are multiple headers with the same key, then we concatenate
+        them with commas. See: https://tools.ietf.org/html/rfc7230#section-3.2.2
+        """
+        normalized_key = key.lower().encode(self.encoding)
+
+        items = [
+            header_value.decode(self.encoding)
+            for _, header_key, header_value in self._list
+            if header_key == normalized_key
+        ]
+
+        if items:
+            return ", ".join(items)
+
+>       raise KeyError(key)
+E       KeyError: 'x-content-type-options'
+
+../.venv/lib/python3.12/site-packages/httpx/_models.py:302: KeyError
+_____ test_headers_on_all_responses[post-/api/auth/demo-login-kwargs2-403] _____
+
+method = 'post', path = '/api/auth/demo-login'
+kwargs = {'headers': {'Origin': 'http://127.0.0.1:8000', 'Sec-Fetch-Site': 'cross-site'}}
+status = 403
+
+    @pytest.mark.parametrize('method,path,kwargs,status', [
+     ('post','/api/auth/demo-login',{},403),
+     ('post','/api/auth/demo-login',{'headers':{'Origin':'http://127.0.0.1:8000','Content-Length':'4097'}},413),
+     ('post','/api/auth/demo-login',{'headers':{'Origin':'http://127.0.0.1:8000','Sec-Fetch-Site':'cross-site'}},403),
+     ('get','/healthz',{'headers':{'Host':'attacker.invalid'}},400),
+     ('get','/missing',{},404),
+     ('get','/api/auth/me',{},401),
+    ])
+    def test_headers_on_all_responses(method,path,kwargs,status):
+     with TestClient(create_app(),base_url='http://127.0.0.1:8000') as client:
+      response=getattr(client,method)(path,**kwargs)
+     assert response.status_code==status
+>    assert response.headers['x-content-type-options']=='nosniff'
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_security_headers.py:18:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = Headers({'content-length': '27'}), key = 'x-content-type-options'
+
+    def __getitem__(self, key: str) -> str:
+        """
+        Return a single header value.
+
+        If there are multiple headers with the same key, then we concatenate
+        them with commas. See: https://tools.ietf.org/html/rfc7230#section-3.2.2
+        """
+        normalized_key = key.lower().encode(self.encoding)
+
+        items = [
+            header_value.decode(self.encoding)
+            for _, header_key, header_value in self._list
+            if header_key == normalized_key
+        ]
+
+        if items:
+            return ", ".join(items)
+
+>       raise KeyError(key)
+E       KeyError: 'x-content-type-options'
+
+../.venv/lib/python3.12/site-packages/httpx/_models.py:302: KeyError
+=============================== warnings summary ===============================
+../.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /workspace/astro-express/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_security_headers.py::test_headers_on_all_responses[post-/api/auth/demo-login-kwargs0-403]
+FAILED tests/test_security_headers.py::test_headers_on_all_responses[post-/api/auth/demo-login-kwargs1-413]
+FAILED tests/test_security_headers.py::test_headers_on_all_responses[post-/api/auth/demo-login-kwargs2-403]
+3 failed, 3 passed, 1 warning in 0.59s

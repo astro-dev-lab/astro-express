@@ -19,4 +19,4 @@ build-backend = "setuptools.build_meta"
 include = ["app*"]
 
 [tool.setuptools.package-data]
-app = ["migrations/*.sql"]
+app = ["migrations/*.sql", "corporate.*.sql"]

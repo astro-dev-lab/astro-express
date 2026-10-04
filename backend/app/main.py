@@ -267,11 +267,15 @@ def create_app(settings: Settings | None = None, repository=None) -> FastAPI:
         session = await authorized(request)
         return {"events": await database_call(store.activity, session["user"]["id"]) if store is not None else list(session.events)}
 
+    from .corporate import attach_corporate
+    attach_corporate(app, store, authorized, database_call)
+
     dist = Path(__file__).resolve().parents[2] / "frontend" / "dist"
     if dist.is_dir():
         if (dist / "assets").is_dir():
             app.mount("/assets", StaticFiles(directory=dist / "assets"), name="assets")
         @app.get("/")
+        @app.get("/corporate")
         async def index():
             return FileResponse(dist / "index.html")
     return app

@@ -1,0 +1,14 @@
+WARNING: The directory '/home/agent/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing ./backend
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: me-astro-fast-demo
+  Building wheel for me-astro-fast-demo (pyproject.toml): started
+  Building wheel for me-astro-fast-demo (pyproject.toml): finished with status 'done'
+  Created wheel for me-astro-fast-demo: filename=me_astro_fast_demo-0.1.0-py3-none-any.whl size=18740 sha256=a415862c4e7b0c920cf7b909abc1e570bbbf5a504ddf3ece7cfddc649b8b4466
+  Stored in directory: /tmp/pip-ephem-wheel-cache-ixcysh0t/wheels/35/c0/9d/84e5e0a22c7a5ca141b600d2e6b3bf93fd287e7ca771cf411a
+Successfully built me-astro-fast-demo
+corporate migration files packaged: ['app/corporate.py']
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+AssertionError: G2 migrations missing from wheel

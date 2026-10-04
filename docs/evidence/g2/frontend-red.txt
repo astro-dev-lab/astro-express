@@ -1,0 +1,36 @@
+
+> me-astro-fast-demo@0.1.0 test
+> vitest --run
+
+
+ RUN  v4.1.11 /workspace/astro-express/frontend
+
+ ❯ src/Corporate.test.tsx (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/Corporate.test.tsx [ src/Corporate.test.tsx ]
+Error: Failed to resolve import "./Corporate" from "src/Corporate.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /workspace/astro-express/frontend/src/Corporate.test.tsx:3:22
+  2  |  import { render, screen, fireEvent, waitFor, cleanup } from "@testing-library/react";
+  3  |  import { afterEach, describe, expect, it, vi } from "vitest";
+  4  |  import Corporate from "./Corporate";
+     |                         ^
+  5  |  const session = { user: { id: "owner", display_name: "Owner", role: "admin" }, csrf_token: "synthetic-csrf" };
+  6  |  const work = { id: "work-1", title: "Synthetic task", objective: "Local change", acceptance: "Tests pass", digest: "a...
+ ❯ TransformPluginContext._formatLog node_modules/vite/dist/node/chunks/config.js:29079:43
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/config.js:29076:14
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/config.js:27199:18
+ ❯ node_modules/vite/dist/node/chunks/config.js:27257:32
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/config.js:27225:4
+ ❯ EnvironmentPluginContainer.transform node_modules/vite/dist/node/chunks/config.js:28877:14
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/config.js:22746:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  9 passed (9)
+   Start at  09:00:03
+   Duration  2.30s (transform 141ms, setup 125ms, import 190ms, tests 732ms, environment 819ms)

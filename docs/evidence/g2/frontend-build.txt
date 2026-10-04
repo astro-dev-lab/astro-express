@@ -1,0 +1,13 @@
+
+> me-astro-fast-demo@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 32 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.47 kB │ gzip:  0.31 kB
+dist/assets/index-FYKwiJ40.css    9.93 kB │ gzip:  2.89 kB
+dist/assets/index-DS3kcKwH.js   204.15 kB │ gzip: 64.52 kB
+✓ built in 1.48s

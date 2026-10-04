@@ -1,0 +1,7 @@
+PASS: Real TLS credential login; anonymous Corporate denied; demo auto-login unavailable
+PASS: All twelve P1 synthetic scenarios preserved; no live vendor claim
+PASS: Six-section mobile browser: intake, separate deliberate approval, blocked contract, zero actual; keyboard and 44px controls
+PASS: Actual app process restart preserves authenticated session, projects, intake, approvals, jobs, budget and audit
+PASS: Idempotent retry creates no duplicate job/issue marker; every nonzero actual blocked
+PASS: Logout revokes Corporate access; browser recorded zero outside-origin requests and zero JavaScript errors
+6 actual G2 runtime checks passed; 0 failed

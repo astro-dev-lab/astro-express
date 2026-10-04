@@ -1,0 +1,60 @@
+FE                                                                       [100%]
+==================================== ERRORS ====================================
+_ ERROR at teardown of test_unknown_schema_and_actual_conflicting_reference_fail_closed _
+
+    @pytest.fixture
+    def corporate():
+        name = urlsplit(URL).path.lstrip("/")
+        assert name.startswith("astro_test_") and os.getenv("TEST_DATABASE_CONFIRM") == name
+        migrate(URL)
+        base = PostgresStore(URL)
+        uid = base.create_user("synthetic_owner", "Synthetic Owner", "admin", hash_password("synthetic-test-password-123"))
+        other = base.create_user("synthetic_other", "Synthetic Other", "admin", hash_password("synthetic-test-password-123"))
+        migrate_corporate(base)
+        store = CorporateStore(base)
+        store.provision_owner("synthetic_owner")
+        yield store, Actor(uid, "human"), Actor(other, "human")
+>       migrate_corporate(base, "down", name)
+
+tests/test_corporate_postgres.py:28:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+base = <app.store.PostgresStore object at 0x7fec0c52ec90>, direction = 'down'
+confirm = 'astro_test_g2'
+
+    def migrate_corporate(base, direction="up", confirm=None):
+        name=urlsplit(base.database_url).path.lstrip('/')
+        if direction not in {"up","down"} or (direction=="down" and (not name.startswith('astro_test_') or confirm!=name)):
+            raise GuardError("Downgrade requires exact disposable database confirmation")
+        with base.connection() as conn:
+            conn.execute("SELECT pg_advisory_xact_lock(%s)",(726081342,))
+            conn.execute("CREATE TABLE IF NOT EXISTS corporate_schema_migrations(version integer PRIMARY KEY)")
+            versions=[r['version'] for r in conn.execute("SELECT version FROM corporate_schema_migrations").fetchall()]
+>           if any(v!=1 for v in versions): raise GuardError("Unknown Corporate migration version")
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           app.corporate.GuardError: Unknown Corporate migration version
+
+app/corporate.py:92: GuardError
+=================================== FAILURES ===================================
+_______ test_unknown_schema_and_actual_conflicting_reference_fail_closed _______
+
+corporate = (<app.corporate.CorporateStore object at 0x7fec0c52eba0>, Actor(id='2ab0187b-3490-4c50-9de8-b24c0bf520d8', kind='human'), Actor(id='d79c51d8-c9a7-4168-ac28-564c0395d293', kind='human'))
+
+    def test_unknown_schema_and_actual_conflicting_reference_fail_closed(corporate):
+        store,owner,_=corporate
+        _,work=project_and_work(store,owner)
+        approve(store,owner,work)
+        job=store.dispatch(owner,work['id'])
+        store.record_actual(owner,job['id'],0,'same-proof')
+        with pytest.raises(GuardError): store.record_actual(owner,job['id'],0,'different-proof')
+        with store.base.connection() as conn: conn.execute('INSERT INTO corporate_schema_migrations VALUES(0)')
+        with pytest.raises(GuardError): migrate_corporate(store.base)
+>       with pytest.raises(GuardError): store.snapshot(owner)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE GuardError
+
+tests/test_corporate_postgres.py:187: Failed
+=========================== short test summary info ============================
+FAILED tests/test_corporate_postgres.py::test_unknown_schema_and_actual_conflicting_reference_fail_closed
+ERROR tests/test_corporate_postgres.py::test_unknown_schema_and_actual_conflicting_reference_fail_closed
+1 failed, 12 deselected, 1 error in 0.82s

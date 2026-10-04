@@ -1,0 +1,11 @@
+WARNING: The directory '/home/agent/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing ./backend
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: me-astro-fast-demo
+  Building wheel for me-astro-fast-demo (pyproject.toml): started
+  Building wheel for me-astro-fast-demo (pyproject.toml): finished with status 'done'
+  Created wheel for me-astro-fast-demo: filename=me_astro_fast_demo-0.1.0-py3-none-any.whl size=20289 sha256=5e164b445ddd2ee46a8c7ddedd33f331284580b73606c4807904d6a29df721ae
+  Stored in directory: /tmp/pip-ephem-wheel-cache-jphr_udm/wheels/35/c0/9d/84e5e0a22c7a5ca141b600d2e6b3bf93fd287e7ca771cf411a
+Successfully built me-astro-fast-demo
+PASS exact G2 SQL and preserved P1 SQL packaged (existing global setuptools84; no dependency install)

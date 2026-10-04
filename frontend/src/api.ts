@@ -45,7 +45,7 @@ export async function api<T>(
   if (!response.ok)
     throw new ApiError(
       response.status === 401
-        ? "Your demo session ended. Please sign in again."
+        ? "Your session ended. Please sign in again."
         : response.status === 403
           ? "Request rejected by the local security checks."
           : `Request failed (${response.status}). Please try again.`,

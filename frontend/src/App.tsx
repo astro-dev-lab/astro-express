@@ -25,6 +25,9 @@ const details: Record<string, { icon: string; copy: string }> = {
 };
 export default function App() {
   const [session, setSession] = useState<Session | null>(null),
+    [authConfig, setAuthConfig] = useState<{mode: "simulation" | "production"; credential_login: boolean} | null>(null),
+    [username, setUsername] = useState(""),
+    [password, setPassword] = useState(""),
     [checking, setChecking] = useState(true),
     [providers, setProviders] = useState<Provider[]>([]),
     [events, setEvents] = useState<Result[]>([]),
@@ -54,7 +57,11 @@ export default function App() {
   }
   useEffect(() => {
     let active = true;
-    api<Session>("/api/auth/me")
+    api<{mode: "simulation" | "production"; credential_login: boolean}>("/api/auth/config")
+      .then(config => {
+        if (active) setAuthConfig(config);
+        return api<Session>("/api/auth/me");
+      })
       .then(async (s) => {
         if (active) {
           setSession(s);
@@ -75,12 +82,17 @@ export default function App() {
     setBusy("login");
     setError("");
     try {
-      const s = await api<Session>("/api/auth/demo-login", undefined, {});
+      if (!authConfig) return;
+      const credentialLogin = authConfig.mode === "production" && authConfig.credential_login;
+      const s = await api<Session>(credentialLogin ? "/api/auth/login" : "/api/auth/demo-login", undefined, credentialLogin ? {username, password} : {});
       setSession(s);
       await refresh();
     } catch (e) {
-      fail(e);
+      if (authConfig?.mode === "production" && e instanceof ApiError && [401, 403, 422].includes(e.status))
+        setError("Unable to sign in. Check your credentials and try again.");
+      else fail(e);
     } finally {
+      setPassword("");
       setBusy(null);
     }
   }
@@ -100,6 +112,7 @@ export default function App() {
     }
   }
   async function run(provider: string, action: string) {
+    if (session?.user.role === "viewer") return;
     setBusy(provider);
     setError("");
     try {
@@ -127,7 +140,7 @@ export default function App() {
           </span>
         </a>
         <span className="local-label">
-          <span /> LOCAL DEMO
+          <span /> {authConfig?.mode === "production" ? "PROTECTED WORKSPACE" : "LOCAL DEMO"}
         </span>
         {session && (
           <button className="signout" onClick={logout} disabled={busy !== null}>
@@ -165,14 +178,21 @@ export default function App() {
             Explore six everyday integrations in one focused workspace. Every
             action uses synthetic fixtures and stays inside this local demo.
           </p>
-          <button className="primary" onClick={login} disabled={busy !== null}>
-            {busy === "login" ? "Opening workspace…" : "Enter demo workspace"}{" "}
-            <span aria-hidden="true">↗</span>
-          </button>
-          <p className="login-note">
-            Sign in as Demo Operator. No account, password, or personal data
-            needed.
-          </p>
+          {authConfig?.mode === "production" && authConfig.credential_login ? (
+            <form className="credential-form" onSubmit={event => {event.preventDefault(); void login();}}>
+              <label htmlFor="username">Username</label>
+              <input id="username" name="username" autoComplete="username" required value={username} onChange={event => setUsername(event.target.value)} disabled={busy !== null}/>
+              <label htmlFor="password">Password</label>
+              <input id="password" name="password" type="password" autoComplete="off" required value={password} onChange={event => setPassword(event.target.value)} disabled={busy !== null}/>
+              <button className="primary" type="submit" disabled={busy !== null}>{busy === "login" ? "Signing in…" : "Sign in"}</button>
+              <p className="login-note">Use your provisioned workspace credentials. Provider workflows remain simulated.</p>
+            </form>
+          ) : authConfig?.mode === "simulation" ? (<>
+            <button className="primary" onClick={login} disabled={busy !== null}>
+              {busy === "login" ? "Opening workspace…" : "Enter demo workspace"} <span aria-hidden="true">↗</span>
+            </button>
+            <p className="login-note">Sign in as Demo Operator. No account, password, or personal data needed.</p>
+          </>) : <p role="status">Sign-in configuration unavailable.</p>}
           <div className="login-chips">
             {Object.keys(details).map((id) => (
               <span key={id}>
@@ -197,7 +217,7 @@ export default function App() {
               </p>
             </div>
             <div className="session-state">
-              <span className="status-dot" /> Demo session active
+              <span className="status-dot" /> {authConfig?.mode === "production" ? "Session active" : "Demo session active"}
             </div>
           </section>
           <div className="simulation-banner">
@@ -215,6 +235,7 @@ export default function App() {
             <h2>Connected ideas. Simulated actions.</h2>
             <span>6 integration playgrounds</span>
           </section>
+          {session.user.role === "viewer" && <p id="viewer-hint" className="login-note">Read-only access. An administrator can run simulation scenarios.</p>}
           <div className="cards">
             {providers.map((p) => (
               <article className={`card ${p.id}`} key={p.id}>
@@ -232,6 +253,7 @@ export default function App() {
                 <div className="connection">
                   <span /> NOT CONNECTED
                 </div>
+                {authConfig?.mode === "production" && <p className="login-note">SANDBOX NOT CONFIGURED</p>}
                 <div className="actions">
                   {p.actions.map((a, index) => {
                     const id = typeof a === "string" ? a : a.id,
@@ -246,7 +268,8 @@ export default function App() {
                           index === 0 ? "action-success" : "action-failure"
                         }
                         aria-label={`${p.name}: ${label}`}
-                        disabled={busy !== null}
+                        aria-describedby={session.user.role === "viewer" ? "viewer-hint" : undefined}
+                        disabled={busy !== null || session.user.role === "viewer"}
                         onClick={() => run(p.id, id)}
                       >
                         {busy === p.id ? "Running…" : label}
@@ -325,7 +348,7 @@ export default function App() {
         </main>
       )}
       <footer>
-        <span>ME Astro Fast · P0 simulation lab</span>
+        <span>ME Astro Fast · {authConfig?.mode === "production" ? "P1 foundation / regression fixtures" : "Local regression lab"}</span>
         <span>Synthetic data. Real interaction.</span>
       </footer>
     </div>

@@ -1,11 +1,9 @@
-# Security boundary
+# P1 security boundary
 
-P0 is a synthetic local demonstration. Anyone using the local browser can select the fictional operator. Do not expose it to public networks or use it for real identities/data. Run one worker on `127.0.0.1`; sessions and logs are temporary.
+Explicit credential mode disables demo auto-login and rejects insecure HTTP, unapproved origin/host and unsafe database settings. Database startup readiness is required. There are no default production passwords or JWT secrets. User provisioning is local CLI with non-echoing prompts; Argon2id stores salted passwords. Session token digests, one-hour expiry, server-side revocation, persistent login throttles, per-user activity and admin/viewer checks are implemented.
 
-Security review verifies opaque random cookies, HttpOnly/SameSite controls, logout/expiry, Origin and CSRF validation, loopback Host/config enforcement, strict inputs, bounded memory, local static assets, and vendor no-egress. No default JWT secret is used. Live and production modes are unsupported.
+Origin + CSRF safeguards remain. All ASGI response paths carry no-store, CSP, MIME protection, frame denial and no-referrer. Validation/database failures do not echo input or raw errors. Use `--no-access-log --no-proxy-headers` with direct TLS for credential-mode verification to avoid query-string disclosure and untrusted proxy headers. Business deployment requires a separate verified topology and approved target.
 
-Runtime does not enforce an operating-system network sandbox. No-egress evidence combines source review with socket-denied endpoint tests and browser request checks. Defense in depth can use a network-isolated environment allowing only local browser traffic.
+P1 tests use synthetic disposable PostgreSQL and temporary local TLS/user credentials. No personal accounts, real customers or vendor sends are exercised. Six provider workflows remain explicitly labeled regression simulations until independent real sandbox evidence and least-scoped secret injection exist. Never put credentials, signing secrets, raw backup archives or environment dumps in Git/chat/issues/logs.
 
-Install tools contact package registries; Git fetch/handoff contacts GitHub. Those operations do not exercise vendor integrations. No workflow, cloud deployment, external account provisioning, or paid service is part of P0.
-
-Dependency advisory scanning is separate from functional tests. Passing tests do not prove all dependencies vulnerability-free. See verification and independent QA reports for actual checks and remaining limits.
+Known limitations: no OS egress firewall; exact dependency pins lack distribution hashes; no automated accessibility conformance claim; no real vendor credential/isolation or signed Stripe sandbox-webhook proof yet. Vercel spending pause and cumulative P1 headroom are unverified. Conditional release is blocked until all CEO gates pass. See `docs/p1-verification.md` and `docs/p1-budget.md`; historical P0 reviews do not certify this head.

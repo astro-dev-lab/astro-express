@@ -1,0 +1,18 @@
+PASS: real PostgreSQL HTTPS credential login; demo auto-login disabled
+PASS: all 12 regression fixtures authenticated and recorded in real PostgreSQL
+PASS: actual uvicorn process restart preserves authenticated session and activity
+PASS: real PostgreSQL viewer read-only/isolation/logout
+PASS: actual mobile credential browser admin/viewer flow; zero external requests/errors
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "scripts/verify-p1-postgres.py", line 142, in <module>
+    docker('pg_restore','-U','postgres','-d','astro_test_p1_restore','--exit-on-error','--no-owner','--no-acl',input=archive)
+  File "scripts/verify-p1-postgres.py", line 35, in docker
+    return subprocess.run(['docker', 'exec', CONTAINER, *args], check=True, capture_output=True, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['docker', 'exec', 'astro-p1-db-test', 'pg_restore', '-U', 'postgres', '-d', 'astro_test_p1_restore', '--exit-on-error', '--no-owner', '--no-acl']' returned non-zero exit status 1.

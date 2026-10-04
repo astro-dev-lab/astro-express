@@ -1,0 +1,973 @@
+
+> me-astro-fast-demo@0.1.0 test
+> vitest --run
+
+
+ RUN  v4.1.11 /workspace/astro-express/frontend
+
+ ❯ src/App.test.tsx (7 tests | 3 failed) 2753ms
+   × production sign-in requires credentials and preserves administrator controls 1011ms
+   × invalid credentials give generic error and clear password 1009ms
+   × viewer can read six cards but cannot execute any scenario 47ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/App.test.tsx > production sign-in requires credentials and preserves administrator controls
+TestingLibraryElementError: Unable to find a label with the text of: Username
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"topbar"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33maria-label[39m=[32m"ME Astro Fast home"[39m
+          [33mclass[39m=[32m"brand"[39m
+          [33mhref[39m=[32m"/"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"brand-mark"[39m
+          [36m>[39m
+            [0m✳[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mme astro [0m
+            [36m<strong>[39m
+              [0mfast[0m
+            [36m</strong>[39m
+          [36m</span>[39m
+        [36m</a>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"local-label"[39m
+        [36m>[39m
+          [36m<span />[39m
+          [0m LOCAL DEMO[0m
+        [36m</span>[39m
+      [36m</header>[39m
+      [36m<main[39m
+        [33mclass[39m=[32m"login"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"eyebrow"[39m
+        [36m>[39m
+          [0mYOUR OFFLINE WORKFLOW PLAYGROUND[0m
+        [36m</div>[39m
+        [36m<h1>[39m
+          [0mBig workflows.[0m
+          [36m<br />[39m
+          [36m<span>[39m
+            [0mZero live connections.[0m
+          [36m</span>[39m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"intro"[39m
+        [36m>[39m
+          [0mExplore six everyday integrations in one focused workspace. Every action uses synthetic fixtures and stays inside this local demo.[0m
+        [36m</p>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"primary"[39m
+        [36m>[39m
+          [0mEnter demo workspace[0m
+          [0m [0m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+          [36m>[39m
+            [0m↗[0m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"login-note"[39m
+        [36m>[39m
+          [0mSign in as Demo Operator. No account, password, or personal data needed.[0m
+        [36m</p>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"login-chips"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mStripe[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mHubSpot[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mNotion[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mResend[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mTwilio[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mGoogle[0m
+          [36m</span>[39m
+        [36m</div>[39m
+      [36m</main>[39m
+      [36m<footer>[39m
+        [36m<span>[39m
+          [0mME Astro Fast · P0 simulation lab[0m
+        [36m</span>[39m
+        [36m<span>[39m
+          [0mSynthetic data. Real interaction.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"topbar"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33maria-label[39m=[32m"ME Astro Fast home"[39m
+          [33mclass[39m=[32m"brand"[39m
+          [33mhref[39m=[32m"/"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"brand-mark"[39m
+          [36m>[39m
+            [0m✳[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mme astro [0m
+            [36m<strong>[39m
+              [0mfast[0m
+            [36m</strong>[39m
+          [36m</span>[39m
+        [36m</a>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"local-label"[39m
+        [36m>[39m
+          [36m<span />[39m
+          [0m LOCAL DEMO[0m
+        [36m</span>[39m
+      [36m</header>[39m
+      [36m<main[39m
+        [33mclass[39m=[32m"login"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"eyebrow"[39m
+        [36m>[39m
+          [0mYOUR OFFLINE WORKFLOW PLAYGROUND[0m
+        [36m</div>[39m
+        [36m<h1>[39m
+          [0mBig workflows.[0m
+          [36m<br />[39m
+          [36m<span>[39m
+            [0mZero live connections.[0m
+          [36m</span>[39m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"intro"[39m
+        [36m>[39m
+          [0mExplore six everyday integrations in one focused workspace. Every action uses synthetic fixtures and stays inside this local demo.[0m
+        [36m</p>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"primary"[39m
+        [36m>[39m
+          [0mEnter demo workspace[0m
+          [0m [0m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+          [36m>[39m
+            [0m↗[0m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"login-note"[39m
+        [36m>[39m
+          [0mSign in as Demo Operator. No account, password, or personal data needed.[0m
+        [36m</p>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"login-chips"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mStripe[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mHubSpot[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mNotion[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mResend[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mTwilio[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mGoogle[0m
+          [36m</span>[39m
+        [36m</div>[39m
+      [36m</main>[39m
+      [36m<footer>[39m
+        [36m<span>[39m
+          [0mME Astro Fast · P0 simulation lab[0m
+        [36m</span>[39m
+        [36m<span>[39m
+          [0mSynthetic data. Real interaction.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/App.test.tsx:164:33
+    162| test("production sign-in requires credentials and preserves administra…
+    163|   mock("production"); render(<App />);
+    164|   const username = await screen.findByLabelText("Username");
+       |                                 ^
+    165|   const password = screen.getByLabelText("Password");
+    166|   expect(screen.queryByRole("button", {name:"Enter demo workspace"})).…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/App.test.tsx > invalid credentials give generic error and clear password
+TestingLibraryElementError: Unable to find a label with the text of: Username
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"topbar"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33maria-label[39m=[32m"ME Astro Fast home"[39m
+          [33mclass[39m=[32m"brand"[39m
+          [33mhref[39m=[32m"/"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"brand-mark"[39m
+          [36m>[39m
+            [0m✳[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mme astro [0m
+            [36m<strong>[39m
+              [0mfast[0m
+            [36m</strong>[39m
+          [36m</span>[39m
+        [36m</a>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"local-label"[39m
+        [36m>[39m
+          [36m<span />[39m
+          [0m LOCAL DEMO[0m
+        [36m</span>[39m
+      [36m</header>[39m
+      [36m<main[39m
+        [33mclass[39m=[32m"login"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"eyebrow"[39m
+        [36m>[39m
+          [0mYOUR OFFLINE WORKFLOW PLAYGROUND[0m
+        [36m</div>[39m
+        [36m<h1>[39m
+          [0mBig workflows.[0m
+          [36m<br />[39m
+          [36m<span>[39m
+            [0mZero live connections.[0m
+          [36m</span>[39m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"intro"[39m
+        [36m>[39m
+          [0mExplore six everyday integrations in one focused workspace. Every action uses synthetic fixtures and stays inside this local demo.[0m
+        [36m</p>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"primary"[39m
+        [36m>[39m
+          [0mEnter demo workspace[0m
+          [0m [0m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+          [36m>[39m
+            [0m↗[0m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"login-note"[39m
+        [36m>[39m
+          [0mSign in as Demo Operator. No account, password, or personal data needed.[0m
+        [36m</p>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"login-chips"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mStripe[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mHubSpot[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mNotion[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mResend[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mTwilio[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mGoogle[0m
+          [36m</span>[39m
+        [36m</div>[39m
+      [36m</main>[39m
+      [36m<footer>[39m
+        [36m<span>[39m
+          [0mME Astro Fast · P0 simulation lab[0m
+        [36m</span>[39m
+        [36m<span>[39m
+          [0mSynthetic data. Real interaction.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"topbar"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33maria-label[39m=[32m"ME Astro Fast home"[39m
+          [33mclass[39m=[32m"brand"[39m
+          [33mhref[39m=[32m"/"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"brand-mark"[39m
+          [36m>[39m
+            [0m✳[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mme astro [0m
+            [36m<strong>[39m
+              [0mfast[0m
+            [36m</strong>[39m
+          [36m</span>[39m
+        [36m</a>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"local-label"[39m
+        [36m>[39m
+          [36m<span />[39m
+          [0m LOCAL DEMO[0m
+        [36m</span>[39m
+      [36m</header>[39m
+      [36m<main[39m
+        [33mclass[39m=[32m"login"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"eyebrow"[39m
+        [36m>[39m
+          [0mYOUR OFFLINE WORKFLOW PLAYGROUND[0m
+        [36m</div>[39m
+        [36m<h1>[39m
+          [0mBig workflows.[0m
+          [36m<br />[39m
+          [36m<span>[39m
+            [0mZero live connections.[0m
+          [36m</span>[39m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"intro"[39m
+        [36m>[39m
+          [0mExplore six everyday integrations in one focused workspace. Every action uses synthetic fixtures and stays inside this local demo.[0m
+        [36m</p>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"primary"[39m
+        [36m>[39m
+          [0mEnter demo workspace[0m
+          [0m [0m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+          [36m>[39m
+            [0m↗[0m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"login-note"[39m
+        [36m>[39m
+          [0mSign in as Demo Operator. No account, password, or personal data needed.[0m
+        [36m</p>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"login-chips"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mStripe[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mHubSpot[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mNotion[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mResend[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mTwilio[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mGoogle[0m
+          [36m</span>[39m
+        [36m</div>[39m
+      [36m</main>[39m
+      [36m<footer>[39m
+        [36m<span>[39m
+          [0mME Astro Fast · P0 simulation lab[0m
+        [36m</span>[39m
+        [36m<span>[39m
+          [0mSynthetic data. Real interaction.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/App.test.tsx:177:33
+    175| test("invalid credentials give generic error and clear password", asyn…
+    176|   mock("production"); render(<App />);
+    177|   fireEvent.change(await screen.findByLabelText("Username"),{target:{v…
+       |                                 ^
+    178|   fireEvent.change(screen.getByLabelText("Password"),{target:{value:"s…
+    179|   vi.mocked(fetch).mockResolvedValueOnce(response({detail:"must not re…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/App.test.tsx > viewer can read six cards but cannot execute any scenario
+TestingLibraryElementError: Unable to find an element with the text: Read-only access. An administrator can run simulation scenarios.. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"topbar"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33maria-label[39m=[32m"ME Astro Fast home"[39m
+          [33mclass[39m=[32m"brand"[39m
+          [33mhref[39m=[32m"/"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"brand-mark"[39m
+          [36m>[39m
+            [0m✳[0m
+          [36m</span>[39m
+          [36m<span>[39m
+            [0mme astro [0m
+            [36m<strong>[39m
+              [0mfast[0m
+            [36m</strong>[39m
+          [36m</span>[39m
+        [36m</a>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"local-label"[39m
+        [36m>[39m
+          [36m<span />[39m
+          [0m LOCAL DEMO[0m
+        [36m</span>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"signout"[39m
+        [36m>[39m
+          [0mSign out[0m
+        [36m</button>[39m
+      [36m</header>[39m
+      [36m<main[39m
+        [33mclass[39m=[32m"dashboard"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"heading"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"eyebrow"[39m
+            [36m>[39m
+              [0mWORKSPACE / OVERVIEW[0m
+            [36m</div>[39m
+            [36m<h1>[39m
+              [0mYour integration lab[0m
+              [36m<span>[39m
+                [0m.[0m
+              [36m</span>[39m
+            [36m</h1>[39m
+            [36m<p>[39m
+              [0mWelcome, [0m
+              [0mDemo Operator[0m
+              [0m. Put a workflow through its paces.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"session-state"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"status-dot"[39m
+            [36m/>[39m
+            [0m Demo session active[0m
+          [36m</div>[39m
+        [36m</section>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"simulation-banner"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33maria-hidden[39m=[32m"true"[39m
+          [36m>[39m
+            [0m◈[0m
+          [36m</span>[39m
+          [36m<div>[39m
+            [36m<strong>[39m
+              [0mSIMULATION — NO LIVE CONNECTIONS[0m
+            [36m</strong>[39m
+            [36m<p>[39m
+              [0mFixtures only. No payments, messages, account connections, or external writes.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"offline-pill"[39m
+          [36m>[39m
+            [0m100% local[0m
+          [36m</span>[39m
+        [36m</div>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"section-title"[39m
+        [36m>[39m
+          [36m<h2>[39m
+            [0mConnected ideas. Simulated actions.[0m
+          [36m</h2>[39m
+          [36m<span>[39m
+            [0m6 integration playgrounds[0m
+          [36m</span>[39m
+        [36m</section>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"cards"[39m
+        [36m>[39m
+          [36m<article[39m
+            [33mclass[39m=[32m"card stripe"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"card-top"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"provider-icon"[39m
+              [36m>[39m
+                [0mS[0m
+              [36m</div>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mode"[39m
+              [36m>[39m
+                [0mSIMULATED[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<h3>[39m
+              [0mStripe[0m
+            [36m</h3>[39m
+            [36m<p>[39m
+              [0mExplore a synthetic checkout and a declined payment.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"connection"[39m
+            [36m>[39m
+              [36m<span />[39m
+              [0m NOT CONNECTED[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"actions"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Stripe: Success scenario"[39m
+                [33mclass[39m=[32m"action-success"[39m
+              [36m>[39m
+                [0mSuccess scenario[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m↗[0m
+                [36m</span>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Stripe: Failure scenario"[39m
+                [33mclass[39m=[32m"action-failure"[39m
+              [36m>[39m
+                [0mFailure scenario[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m⌁[0m
+                [36m</span>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</article>[39m
+          [36m<article[39m
+            [33mclass[39m=[32m"card hubspot"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"card-top"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"provider-icon"[39m
+              [36m>[39m
+                [0mH[0m
+              [36m</div>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mode"[39m
+              [36m>[39m
+                [0mSIMULATED[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<h3>[39m
+              [0mHubSpot[0m
+            [36m</h3>[39m
+            [36m<p>[39m
+              [0mQualify a fictional contact or test a duplicate record.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"connection"[39m
+            [36m>[39m
+              [36m<span />[39m
+              [0m NOT CONNECTED[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"actions"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"HubSpot: Success scenario"[39m
+                [33mclass[39m=[32m"action-success"[39m
+              [36m>[39m
+                [0mSuccess scenario[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m↗[0m
+                [36m</span>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"HubSpot: Failure scenario"[39m
+                [33mclass[39m=[32m"action-failure"[39m
+              [36m>[39m
+                [0mFailure scenario[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m⌁[0m
+                [36m</span>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</article>[39m
+          [36m<article[39m
+            [33mclass[39m=[32m"card notion"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"card-top"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"provider-icon"[39m
+              [36m>[39m
+                [0mN[0m
+              [36m</div>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mode"[39m
+              [36m>[39m
+                [0mSIMULATED[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<h3>[39m
+              [0mNotion[0m
+            [36m</h3>[39m
+            [36m<p>[39m
+              [0mCreate a fixture page or simulate a permission error.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"connection"[39m
+            [36m>[39m
+              [36m<span />[39m
+              [0m NOT CONNECTED[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"actions"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Notion: Success scenario"[39m
+                [33mclass[39m=[32m"action-success"[39m
+              [36m>[39m
+                [0mSuccess scenario[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m↗[0m
+                [36m</span>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Notion: Failure scenario"[39m
+                [33mclass[39m=[32m"action-failure"[39m
+              [36m>[39m
+                [0mFailure scenario[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m⌁[0m
+                [36m</span>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</article>[39m
+          [36m<article[39m
+            [33mclass[39m=[32m"card resend"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"card-top"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"provider-icon"[39m
+              [36m>[39m
+                [0mR[0m
+              [36m</div>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mode"[39m
+              [36m>[39m
+                [0mSIMULATED[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<h3>[39m
+              [0mResend[0m
+            [36m</h3>[39m
+            [36m<p>[39m
+              [0mQueue a simulated email or inspect a bounce.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"connection"[39m
+            [36m>[39m
+              [36m<span />[39m
+              [0m NOT CONNECTED[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"actions"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Resend: Success scenario"[39m
+                [33mclass[39m=[32m"action-success"[39m
+              [36m>[39m
+                [0mSuccess scenario[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m↗[0m
+                [36m</span>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Resend: Failure scenario"[39m
+                [33mclass[39m=[32m"action-failure"[39m
+              [36m>[39m
+                [0mFailure scenario[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m⌁[0m
+                [36m</span>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</article>[39m
+          [36m<article[39m
+            [33mclass[39m=[32m"card twilio"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"card-top"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"provider-icon"[39m
+              [36m>[39m
+                [0mT[0m
+              [36m</div>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mode"[39m
+              [36m>[39m
+                [0mSIMULATED[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<h3>[39m
+              [0mTwilio[0m
+            [36m</h3>[39m
+            [36m<p>[39m
+              [0mTry an SMS fixture or an invalid number scenario.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"connection"[39m
+            [36m>[39m
+              [36m<span />[39m
+              [0m NOT CONNECTED[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"actions"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Twilio: Success scenario"[39m
+                [33mclass[39m=[32m"action-success"[39m
+              [36m>[39m
+                [0mSuccess scenario[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m↗[0m
+                [36m</span>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Twilio: Failure scenario"[39m
+                [33mclass[39m=[32m"action-failure"[39m
+              [36m>[39m
+                [0mFailure scenario[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m⌁[0m
+                [36m</span>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</article>[39m
+          [36m<article[39m
+            [33mclass[39m=[32m"card google"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"card-top"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mclass[39m=[32m"provider-icon"[39m
+              [36m>[39m
+                [0mG[0m
+              [36m</div>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"mode"[39m
+              [36m>[39m
+                [0mSIMULATED[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<h3>[39m
+              [0mGoogle[0m
+            [36m</h3>[39m
+            [36m<p>[39m
+              [0mSimulate a calendar event or an authorization rejection.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"connection"[39m
+            [36m>[39m
+              [36m<span />[39m
+              [0m NOT CONNECTED[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"actions"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Google: Success scenario"[39m
+                [33mclass[39m=[32m"action-success"[39m
+              [36m>[39m
+                [0mSuccess scenario[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m↗[0m
+                [36m</span>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Google: Failure scenario"[39m
+                [33mclass[39m=[32m"action-failure"[39m
+              [36m>[39m
+                [0mFailure scenario[0m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m⌁[0m
+                [36m</span>[39m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</article>[39m
+        [36m</div>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"activity"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"section-title"[39m
+          [36m>[39m
+            [36m<h2>[39m
+              [0mSession activity[0m
+            [36m</h2>[39m
+            [36m<span>[39m
+              [0m0[0m
+              [0m [0m
+              [0mevents[0m
+              [0m · this session only[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"empty"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33maria-hidden[39m=[32m"true"[39m
+            [36m>[39m
+              [0m↗[0m
+            [36m</span>[39m
+            [36m<h3>[39m
+              [0mYour first experiment starts here.[0m
+            [36m</h3>[39m
+            [36m<p>[39m
+              [0mRun any scenario above to see its outcome and demo reference.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+      [36m</main>[39m
+      [36m<footer>[39m
+        [36m<span>[39m
+          [0mME Astro Fast · P0 simulation lab[0m
+        [36m</span>[39m
+        [36m<span>[39m
+          [0mSynthetic data. Real interaction.[0m
+        [36m</span>[39m
+      [36m</footer>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/App.test.tsx:187:17
+    185|   logged=true; mock("production", "viewer"); render(<App />);
+    186|   await screen.findByRole("heading", {name:"Stripe"});
+    187|   expect(screen.getByText("Read-only access. An administrator can run …
+       |                 ^
+    188|   for(const name of names) for(const label of ["Success scenario","Fai…
+    189|     expect(screen.getByRole("button", {name:`${name}: ${label}`})).toB…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 4 passed (7)
+   Start at  05:26:35
+   Duration  3.75s (transform 139ms, setup 119ms, import 199ms, tests 2.75s, environment 491ms)

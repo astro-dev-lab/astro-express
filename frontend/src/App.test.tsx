@@ -19,14 +19,15 @@ const providers = names.map((name) => ({
   ],
 }));
 let logged = false;
-function mock() {
+function mock(mode: "simulation" | "production" = "simulation", role = "admin") {
   vi.stubGlobal(
     "fetch",
     vi.fn(async (url: string) => {
-      if (url.endsWith("/demo-login")) {
+      if (url.endsWith("/config")) return response({mode, credential_login: mode === "production"});
+      if (url.endsWith("/demo-login") || url.endsWith("/login")) {
         logged = true;
         return response({
-          user: { display_name: "Demo Operator" },
+          user: { display_name: "Demo Operator", role },
           csrf_token: "token",
         });
       }
@@ -37,7 +38,7 @@ function mock() {
       if (url.endsWith("/me"))
         return logged
           ? response({
-              user: { display_name: "Demo Operator" },
+              user: { display_name: "Demo Operator", role },
               csrf_token: "token",
             })
           : response({}, 401);
@@ -156,4 +157,52 @@ test("failed fixture shows expected failure and session activity", async () => {
   ).toBeInTheDocument();
   expect(await screen.findByText("Expected failure")).toBeInTheDocument();
   expect(screen.getAllByText("demo-failure")).toHaveLength(2);
+});
+
+test("production sign-in requires credentials and preserves administrator controls", async () => {
+  mock("production"); render(<App />);
+  const username = await screen.findByLabelText("Username");
+  const password = screen.getByLabelText("Password");
+  expect(screen.queryByRole("button", {name:"Enter demo workspace"})).not.toBeInTheDocument();
+  expect(username).toBeRequired(); expect(password).toBeRequired();
+  fireEvent.change(username,{target:{value:"fixture-admin"}});
+  fireEvent.change(password,{target:{value:"synthetic-password"}});
+  fireEvent.click(screen.getByRole("button",{name:"Sign in"}));
+  await screen.findByRole("heading",{name:"Stripe"});
+  expect(fetch).toHaveBeenCalledWith("/api/auth/login",expect.objectContaining({body:JSON.stringify({username:"fixture-admin",password:"synthetic-password"})}));
+  expect(screen.getByRole("button",{name:"Stripe: Success scenario"})).toBeEnabled();
+});
+test("invalid credentials give generic error and clear password", async () => {
+  mock("production"); render(<App />);
+  fireEvent.change(await screen.findByLabelText("Username"),{target:{value:"fixture-user"}});
+  fireEvent.change(screen.getByLabelText("Password"),{target:{value:"synthetic-password"}});
+  vi.mocked(fetch).mockResolvedValueOnce(response({detail:"must not reveal user existence"},401) as Response);
+  fireEvent.click(screen.getByRole("button",{name:"Sign in"}));
+  expect(await screen.findByRole("alert")).toHaveTextContent("Unable to sign in. Check your credentials and try again.");
+  expect(screen.getByLabelText("Password")).toHaveValue("");
+});
+test("viewer can read six cards but cannot execute any scenario", async () => {
+  logged=true; mock("production", "viewer"); render(<App />);
+  await screen.findByRole("heading", {name:"Stripe"});
+  expect(screen.getByText("Read-only access. An administrator can run simulation scenarios.")).toBeInTheDocument();
+  for(const name of names) for(const label of ["Success scenario","Failure scenario"])
+    expect(screen.getByRole("button", {name:`${name}: ${label}`})).toBeDisabled();
+});
+
+test("configuration failure cannot expose either sign-in route", async () => {
+  mock();
+  vi.mocked(fetch).mockRejectedValueOnce(new Error("offline"));
+  render(<App />);
+  expect(await screen.findByRole("alert")).toHaveTextContent("Unable to reach the local demo server");
+  expect(screen.queryByRole("button", { name: "Enter demo workspace" })).not.toBeInTheDocument();
+  expect(screen.queryByRole("button", { name: "Sign in" })).not.toBeInTheDocument();
+  expect(screen.getByText("Sign-in configuration unavailable.")).toBeInTheDocument();
+});
+
+test("production cards distinguish unconfigured real sandbox tests from regression fixtures", async () => {
+  logged = true;
+  mock("production");
+  render(<App />);
+  await screen.findByRole("heading", { name: "Stripe" });
+  expect(screen.getAllByText("SANDBOX NOT CONFIGURED")).toHaveLength(6);
 });

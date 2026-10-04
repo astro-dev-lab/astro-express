@@ -1,0 +1,8 @@
+PASS: real PostgreSQL HTTPS credential login; demo auto-login disabled
+PASS: all 12 regression fixtures authenticated and recorded in real PostgreSQL
+PASS: actual uvicorn process restart preserves authenticated session and activity
+PASS: real PostgreSQL viewer read-only/isolation/logout
+PASS: actual mobile credential browser admin/viewer flow; zero external requests/errors
+PASS: pg_dump/pg_restore synthetic round-trip verifies schema, password hash, sessions and 12 events
+PASS: real PostgreSQL logout revokes old-cookie replay
+{"passed": 7, "failed": 0, "actual_postgresql": true, "provider_tests": "regression fixtures only"}

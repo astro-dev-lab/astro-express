@@ -1,0 +1,16 @@
+PASS: real PostgreSQL HTTPS credential login; demo auto-login disabled
+PASS: all 12 regression fixtures authenticated and recorded in real PostgreSQL
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "scripts/verify-p1-postgres.py", line 84, in <module>
+    server.terminate();server.wait(timeout=5)
+                       ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1264, in wait
+    return self._wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 2045, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['/workspace/astro-express/.venv/bin/python', '-m', 'uvicorn', 'app.main:app', '--app-dir', '/workspace/astro-express/backend', '--host', '127.0.0.1', '--port', '8443', '--workers', '1', '--no-access-log', '--no-proxy-headers', '--ssl-certfile', '/tmp/astro-p1-proof-glr98q8y/certificate.pem', '--ssl-keyfile', '/tmp/astro-p1-proof-glr98q8y/private-key.pem']' timed out after 5 seconds
